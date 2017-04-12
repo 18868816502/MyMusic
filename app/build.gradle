@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+        applicationId "com.mymusic"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    testCompile 'junit:junit:4.12'
+    compile project(':PagerSlidingTabStrip:library')
+    compile files('libs/xUtils-2.6.2.jar')
+    compile 'org.jsoup:jsoup:1.10.2'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+}
